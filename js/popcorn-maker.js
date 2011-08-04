@@ -11,35 +11,40 @@
 			editorHeight: "98%"
 		});
 
-		b.previewer({
+
+var iframe = document.getElementById("iframe2");
+
+function ready() {
+  b.previewer({
 			layout: "layouts/default.html",
 			target: "previewer-iframe",
 			popcornURL: "lib/popcorn-complete.js",
 			media: "http://robothaus.org/bugs/video/brendan1.ogv",
-			callback: function() {
-				b.buildPopcorn("outerVideo", function() {
-					b.plugintray({
-						target: "butter-plug-in-div"
-					});
-					var registry = b.getRegistry();
-					for (var i = 0, l = registry.length; i < l; i++) {
-						b.addPlugin({
-							type: registry[i].type
-						});
-					}
-				});
-			}
+			callback: function(){
+        b.buildPopcorn("outerVideo", function() {
+			    b.plugintray({
+				    target: "butter-plug-in-div"
+			    });
+			    var registry = b.getRegistry();
+			    for (var i = 0, l = registry.length; i < l; i++) {
+				    b.addPlugin({
+					    type: registry[i].type
+				    } );
+			    }
+        } ); 
+      }
 		});
+}
 
-		var iframe = document.getElementById("iframe2");
-		iframe.addEventListener("load", function(e) {
-			var myDiv = iframe.contentWindow.document.getElementById("mydiv");
-      b.timeline({
-        //target: "butter-timeline-div"
-        target: myDiv
-      });
-		}, false);
-
+        iframe.addEventListener( "load", function( e ) {
+          var myDiv = iframe.contentWindow.document.getElementById("mydiv");
+          b.timeline({
+            //target: "butter-timeline-div"
+            target: myDiv
+          });
+          ready();
+          
+        }, false);
 
 		b.listen("trackeditstarted", function() {
 			overlay("visible");
