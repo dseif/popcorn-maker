@@ -382,7 +382,7 @@
     this.getScriptPaths = function(){
       var doc = ( iframe.contentWindow || iframe.contentDocument ).document,
           tempHead = doc.createElement( "head" ),
-          srcs = [];
+          srcs = {};
           
       tempHead.innerHTML = originalHead;
       for( var i = 0, l = tempHead.children.length; i < l; i++ ) {
@@ -682,6 +682,7 @@
 
         } else {
           var ifrme = iframe.contentWindow || iframe.contentDocument;
+          console.log(media.getId(), that.getAllMedia());
           ifrme[ "popcorn" + media.getId() ].removeTrackEvent( butterIds[ e.data.getId() ] );
         }
       }
