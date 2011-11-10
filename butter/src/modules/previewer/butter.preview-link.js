@@ -208,18 +208,11 @@
       var players = {
         "youtu": function() {
           return "var popcorn = Popcorn.youtube( '" + that.target + "', '" +
-            that.url + "', {\n" + 
-            "width: 430, height: 300\n" + 
-          "} );\n";
+            that.url + "' );\n";
         },
         "vimeo": function() {
-          return "var popcorn = Popcorn( Popcorn.vimeo( '" + that.target + "', '" +
-          that.url + "', {\n" +
-            "css: {\n" +
-              "width: '430px',\n" +
-              "height: '300px'\n" +
-            "}\n" +
-          "} )" + popcornOptions + " );\n";
+          return "var popcorn = Popcorn.vimeo( '" + that.target + "', '" +
+          that.url + "');\n";
         },
         "soundcloud": function() {
           return "var popcorn = Popcorn( Popcorn.soundcloud( '" + that.target + "'," +

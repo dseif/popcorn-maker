@@ -86,7 +86,7 @@
 
           server.bindClientWindow( "link", iframeWindow, function( message ) {
           });
-          
+
           that.play = function() {
             logger.debug( 'Playing' );
             server.send( "link", "play", "play" );
@@ -136,7 +136,7 @@
               } //if
             });
           });
-          
+
           server.listen( "link", "mediapaused", function( message ) {
             logger.debug( "Received mediapaused" );
             isPlaying = false;
@@ -193,7 +193,7 @@
           iframeWindow.document.head.appendChild( linkScript );
         } //if
         setup( iframeWindow );
-        
+
         // Ugly hack to continue bootstrapping until Butter script is *actually* loaded.
         // Impossible to really tell when <script> has loaded (security).
         logger.debug( "Bootstrapping" );
@@ -252,9 +252,9 @@
           link = new PreviewerLink({
             independent: that.independent
           });
-          iframe.removeEventListener( "load", onLoad, false ); 
+          iframe.removeEventListener( "load", onLoad, false );
         } //onLoad
-        iframe.addEventListener( "load", onLoad, false ); 
+        iframe.addEventListener( "load", onLoad, false );
       } //loadIfram
 
       if ( target.tagName === "DIV" ) {
@@ -308,7 +308,7 @@
       this.pause = function() {
         link.pause();
       }; //pause
-      
+
       this.mute = function() {
         link.mute();
       }; //mute
