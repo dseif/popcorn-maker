@@ -266,12 +266,15 @@
     var trackLayers = {};
     var editTrackTargets =  document.getElementById( "track-edit-target" );
     var trackJSONtextArea = document.getElementById( "track-edit-JSON" );
+    var editTrackTitle = document.getElementById( "track-edit-title" );
 
     var createLayer = function( track ) {
 
       var layerDiv = document.createElement( "div" );
+      innerParagraph = document.createElement( "p" );
       layerDiv.id = "layer-" + track.id;
-      layerDiv.innerHTML = layerDiv.id;
+      innerParagraph.innerHTML = layerDiv.id;
+      layerDiv.appendChild( innerParagraph );
       layerDiv.setAttribute("class", "layer-btn");
       layerDiv.style.position = "relative";
 
@@ -300,6 +303,7 @@
       editButton.addEventListener( "click", function( click ) {
 
         editTrackTargets.innerHTML = "<option value=\"\">Media Element (if applicable)</option>";
+        editTrackTitle.value = trackLayers[ "layer-" + track.id ].children[ 0 ].innerHTML;
 
         var targets = butter.serializeTargets();
 
@@ -309,6 +313,7 @@
         }
 
         var editor = new butter.TrackEditor( track );
+        console.log( editor );
         trackJSONtextArea.value = editor.json;
         editTrackTargets.value = editor.target;
 
@@ -327,6 +332,7 @@
         }; //closeTrackEditor
 
         var applyTrackEditor = function() {
+          trackLayers[ "layer-" + track.id ].children[ 0 ].innerHTML = editTrackTitle.value;
           editor.target = editTrackTargets.value;
         }; //applyTrackEditor
 
