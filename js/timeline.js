@@ -310,7 +310,7 @@
             editTrackTargets.innerHTML += "<option value=\"" + targets[ i ].name + "\">" + targets[ i ].name + "</option>";
           }
 
-          var editor = new butter.TrackEditor( track );
+          var editor = new butter.trackeditor.Editor( track );
           trackJSONtextArea.value = editor.json;
           editTrackTargets.value = editor.target;
 
